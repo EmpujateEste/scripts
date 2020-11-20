@@ -37,7 +37,7 @@ myHeaders = {
 
 req.headers = myHeaders;
 
-let gReq = new Request(`https://api2.r6stats.com/public-api/stats/${username}/ps4/generic`);
+let gReq = new Request(`https://api2.r6stats.com/public-api/stats/${username}/${platform}/generic`);
 
 gReq.headers = myHeaders;
 
