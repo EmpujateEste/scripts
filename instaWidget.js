@@ -17,7 +17,7 @@ let userID = info.graphql.user.id
 let posts = info.graphql.user.edge_owner_to_timeline_media.count
 
 if(posts/12 >5){
-	var num = 5
+	var num = 3
 }else{
 	var num = Math.trunc(posts/12)
 }
