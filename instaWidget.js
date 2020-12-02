@@ -1,3 +1,5 @@
+var version = 0.0.01;
+
 let array = []
 
 let Parameter = args.widgetParameter
