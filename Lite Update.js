@@ -1,6 +1,8 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: yellow; icon-glyph: magic;
+
+//You can do whatever you please with this, I'm not getting anything out of it so go ahead. 
 var fm = FileManager.iCloud();
 
 // Get Scripts(except this one)
