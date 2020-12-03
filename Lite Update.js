@@ -1,8 +1,3 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: yellow; icon-glyph: magic;
-
-//You can do whatever you please with this, I'm not getting anything out of it so go ahead. 
 var fm = FileManager.iCloud();
 
 // Get Scripts(except this one)
@@ -41,19 +36,26 @@ async function newScript(){
 	github.addAction("OK");
 	await github.presentAlert();
 	var oString = fm.readString(fm.joinPath(fm.documentsDirectory(), script));
+
 	var version = oString.match(/var version = (.+)\;/g)[0];
 	var nScript = oString.slice(0,oString.indexOf(version) + version.length) + `        \n
+	var ask = new Alert();
+	ask.message = "Would you like to update your script?";
+	ask.addAction("Yes");
+	ask.addAction("No");
 	var updaterFM = FileManager.iCloud();
         var updatedFile = updaterFM.readString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"));
         var updaterReq = new Request("${github.textFieldValue(0)}");
         var updaterOfficialCode = await updaterReq.loadString();
 var v = updaterOfficialCode.match(/var version = (.+)\;/g)[0];
 v = v.replace(/var version = |[\\",;]/g,"");
+var val = await ask.presentAlert();
+	if(val == false){
         if(version != v ){
 	         updaterFM.writeString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"), updaterOfficialCode);
         }else{
 	         return;
-        }\n` + oString.slice(oString.indexOf(version) + version.length);
+        }}else{return}\n` + oString.slice(oString.indexOf(version) + version.length);
 return nScript;
 	
 }
