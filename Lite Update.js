@@ -21,7 +21,7 @@ var val = await ask.presentAlert();
 
 var fm = FileManager.iCloud();
 
-// Get Scripts(except this one)
+// Get Scripts
 function getScripts(){
 	var scripts = [];
 	var s = fm.listContents(fm.documentsDirectory());
