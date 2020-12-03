@@ -49,13 +49,14 @@ async function newScript(){
         var updaterOfficialCode = await updaterReq.loadString();
 var v = updaterOfficialCode.match(/var version = (.+)\;/g)[0];
 v = v.replace(/var version = |[\\",;]/g,"");
+        if(version != v ){
 var val = await ask.presentAlert();
 	if(val == false){
-        if(version != v ){
 	         updaterFM.writeString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"), updaterOfficialCode);
-        }else{
+        }else{return}
+}else{
 	         return;
-        }}else{return}\n` + oString.slice(oString.indexOf(version) + version.length);
+        }\n` + oString.slice(oString.indexOf(version) + version.length);
 return nScript;
 	
 }
