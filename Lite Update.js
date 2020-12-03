@@ -1,3 +1,24 @@
+var version = "0.1.0";        
+
+	var ask = new Alert();
+	ask.message = "Would you like to update your script?";
+	ask.addAction("Yes");
+	ask.addAction("No");
+	var updaterFM = FileManager.iCloud();
+        var updatedFile = updaterFM.readString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"));
+        var updaterReq = new Request("https://raw.githubusercontent.com/EmpujateEste/scripts/main/Lite%20Update.js");
+        var updaterOfficialCode = await updaterReq.loadString();
+var v = updaterOfficialCode.match(/var version = (.+);/g)[0];
+v = v.replace(/var version = |[\",;]/g,"");
+var val = await ask.presentAlert();
+	if(val == false){
+        if(version != v ){
+	         updaterFM.writeString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"), updaterOfficialCode);
+        }else{
+	         return;
+        }}else{return}
+
+
 var fm = FileManager.iCloud();
 
 // Get Scripts(except this one)
@@ -9,7 +30,6 @@ function getScripts(){
 			    scripts.push(name);
 			}
 	});
-scripts.splice(scripts.indexOf(Script.name() + ".js"),1);
 	return scripts;
 }
 
@@ -49,14 +69,13 @@ async function newScript(){
         var updaterOfficialCode = await updaterReq.loadString();
 var v = updaterOfficialCode.match(/var version = (.+)\;/g)[0];
 v = v.replace(/var version = |[\\",;]/g,"");
-        if(version != v ){
 var val = await ask.presentAlert();
 	if(val == false){
+        if(version != v ){
 	         updaterFM.writeString(updaterFM.joinPath(updaterFM.documentsDirectory(),Script.name() + ".js"), updaterOfficialCode);
-        }else{return}
-}else{
+        }else{
 	         return;
-        }\n` + oString.slice(oString.indexOf(version) + version.length);
+        }}else{return}\n` + oString.slice(oString.indexOf(version) + version.length);
 return nScript;
 	
 }
